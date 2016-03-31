@@ -1,5 +1,4 @@
 #!/bin/bash
-set -x
 f() {
 	for x in ${1}{A..Z}
 		do ./crypto $x && echo $x > a || echo $x > b &
