@@ -1,9 +1,2 @@
 #!/bin/bash
-f() {
-	for x in ${1}{A..Z}
-		do ./crypto $x && echo $x > a || echo $x > b &
-	done
-	wait
-	[ -f a ] && cat a && exit || f `cat b`
-}
-f
+f() { for x in ${1}{A..Z};do ./crypto $x&&echo $x>a||echo $x>b&	done;wait;[ -f a ]&&cat a&&exit||f `cat b`;};f
