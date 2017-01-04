@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -o errexit
+set -o nounset
+
+PORT=8888
+test "${1:-}" && PORT=$1
+echo "Running on port $PORT"
+
+while true
+do
+    cmd=$(ncat -l "$PORT")
+    if [[ "$cmd" =~ ^echo ]]
+    then
+        eval $cmd
+        continue
+    fi
+    echo "Unknown command"
+done
